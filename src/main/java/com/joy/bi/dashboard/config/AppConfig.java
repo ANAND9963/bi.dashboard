@@ -22,7 +22,7 @@ public class AppConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http)throws Exception{
         http.sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(Authorize -> Authorize.requestMatchers("/api/admin/").hasAnyRole("ROLE_OWNER","ROLE_ADMIN ")
+                .authorizeHttpRequests(Authorize -> Authorize.requestMatchers("/api/admin/").hasAnyAuthority("ROLE_OWNER","ROLE_ADMIN ")
                         .requestMatchers("/api/").authenticated()
                         .anyRequest().permitAll()).addFilterBefore(new JwtTokenValidator(), BasicAuthenticationFilter.class)
                 .csrf(csrf -> csrf.disable())
