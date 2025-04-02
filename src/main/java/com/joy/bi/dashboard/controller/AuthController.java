@@ -6,6 +6,7 @@ import com.joy.bi.dashboard.model.User;
 import com.joy.bi.dashboard.repository.UserRepository;
 import com.joy.bi.dashboard.request.LoginRequest;
 import com.joy.bi.dashboard.response.AuthResponse;
+import com.joy.bi.dashboard.service.CustomerUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,8 +28,6 @@ import java.util.Collection;
 @RequestMapping("/auth")
 public class AuthController {
 
-
-
     @Autowired
     private UserRepository userRepository;
 
@@ -39,8 +38,7 @@ public class AuthController {
     private JwtProvider jwtProvider;
     @Autowired
     private CustomerUserDetailsService customerUserDetailsService;
-    @Autowired
-    private CartRepository cartRepository;
+
 
     @PostMapping("/signup")
     public ResponseEntity<AuthResponse> createUserHandler(@RequestBody User user) throws Exception {
@@ -53,16 +51,11 @@ public class AuthController {
 
         User createdUser = new User();
         createdUser.setEmail(user.getEmail());
-        createdUser.setFullName(user.getFullName());
+        createdUser.setFirstName(user.getFirstName());
+        createdUser.setLastName(user.getLastName());
         createdUser.setRole(user.getRole());
         createdUser.setPassword((passwordEncoder.encode(user.getPassword())));
-
         User savedUser = userRepository.save(createdUser);
-
-
-        Cart cart = new Cart();
-        cart.setCustomer(savedUser);
-        cartRepository.save(cart);
 
         Authentication authentication = new UsernamePasswordAuthenticationToken(user.getEmail(),user.getPassword());
 
@@ -97,8 +90,6 @@ public class AuthController {
         authResponse.setJwt(jwt);
         authResponse.setMessage(" Login Successful");
         authResponse.setRole(USER_ROLE.valueOf(role));
-
-
 
         return new ResponseEntity<>(authResponse, HttpStatus.OK);
 

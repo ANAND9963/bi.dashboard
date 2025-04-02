@@ -1,6 +1,8 @@
 package com.joy.bi.dashboard.service;
 
+import com.joy.bi.dashboard.config.JwtProvider;
 import com.joy.bi.dashboard.model.User;
+import com.joy.bi.dashboard.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
