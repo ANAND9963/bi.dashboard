@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -18,7 +19,15 @@ public class RevenueStatsController {
     private RevenueStatsService service;
 
     @GetMapping("/quarterly")
-    public ResponseEntity<List<RevenueStatsDto>> getQuarterlyStats() {
-        return ResponseEntity.ok(service.getStats());
+    public List<RevenueStatsDto> getQuarterlyStats(
+            @RequestParam(required = false) Integer startYear,
+            @RequestParam(required = false) Integer endYear
+    ) {
+        if (startYear != null && endYear != null) {
+            return service.getQuarterlyRevenueStats(startYear, endYear);
+        } else {
+            return service.getStats();
+        }
     }
+
 }

@@ -16,4 +16,7 @@ public class RevenueStatsService {
     public List<RevenueStatsDto> getStats() {
         return repository.getQuarterlyRevenueStats();
     }
+    public List<RevenueStatsDto> getQuarterlyRevenueStats(int startYear, int endYear) {
+        return repository.getQuarterlyRevenueStats(startYear, endYear);
+    }
 }
