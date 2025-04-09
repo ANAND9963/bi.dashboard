@@ -1,6 +1,7 @@
 package com.joy.bi.dashboard.service;
 
 import com.joy.bi.dashboard.dto.SupplierCountByCategory;
+import com.joy.bi.dashboard.dto.SupplierOption;
 import com.joy.bi.dashboard.repository.SupplierRepository;
 import org.springframework.stereotype.Service;
 
@@ -25,4 +26,14 @@ public class SupplierService {
                 ))
                 .collect(Collectors.toList());
     }
+
+    public List<SupplierOption> getAllSupplierOptions() {
+        return repository.findAllSupplierOptionsNative().stream()
+                .map(row -> new SupplierOption(
+                        ((Number) row[0]).intValue(),
+                        (String) row[1]
+                ))
+                .collect(Collectors.toList());
+    }
+
 }

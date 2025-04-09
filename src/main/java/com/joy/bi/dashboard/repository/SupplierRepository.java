@@ -1,5 +1,6 @@
 package com.joy.bi.dashboard.repository;
 
+import com.joy.bi.dashboard.dto.SupplierOption;
 import com.joy.bi.dashboard.model.Supplier;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
@@ -22,4 +23,9 @@ public interface SupplierRepository extends Repository<Supplier, Long> {
         ORDER BY SupplierCount DESC
     """, nativeQuery = true)
     List<Object[]> countSuppliersByCategory(@Param("categoryId") Integer categoryId);
+
+    @Query(value = "SELECT s.SupplierID, s.SupplierName FROM Purchasing.Suppliers s", nativeQuery = true)
+    List<Object[]> findAllSupplierOptionsNative();
+
+
 }

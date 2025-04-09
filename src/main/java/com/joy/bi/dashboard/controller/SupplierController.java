@@ -1,6 +1,7 @@
 package com.joy.bi.dashboard.controller;
 
 import com.joy.bi.dashboard.dto.SupplierCountByCategory;
+import com.joy.bi.dashboard.dto.SupplierOption;
 import com.joy.bi.dashboard.service.SupplierService;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,5 +22,10 @@ public class SupplierController {
             @RequestParam(required = false) Integer supplierCategoryId
     ) {
         return service.getSupplierCounts(supplierCategoryId);
+    }
+
+    @GetMapping("/list")
+    public List<SupplierOption> getAllSuppliersForDropdown() {
+        return service.getAllSupplierOptions();
     }
 }
