@@ -15,7 +15,7 @@ public class StockItemStockGroup {
     @Id
     @ColumnDefault("NEXT VALUE FOR [Sequences].[StockItemStockGroupID]")
     @Column(name = "StockItemStockGroupID", nullable = false)
-    private Integer id;
+    private Integer stockItemStockGroupID;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "LastEditedBy", nullable = false)

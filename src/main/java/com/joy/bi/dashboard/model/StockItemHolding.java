@@ -16,7 +16,7 @@ import java.time.Instant;
 public class StockItemHolding {
     @Id
     @Column(name = "StockItemID", nullable = false)
-    private Integer id;
+    private Integer stockItemID;
 
     @Column(name = "QuantityOnHand", nullable = false)
     private Integer quantityOnHand;

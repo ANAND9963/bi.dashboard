@@ -16,7 +16,7 @@ public class PaymentMethod {
     @Id
     @ColumnDefault("NEXT VALUE FOR [Sequences].[PaymentMethodID]")
     @Column(name = "PaymentMethodID", nullable = false)
-    private Integer id;
+    private Integer paymentMethodID;
 
     @Nationalized
     @Column(name = "PaymentMethodName", nullable = false, length = 50)

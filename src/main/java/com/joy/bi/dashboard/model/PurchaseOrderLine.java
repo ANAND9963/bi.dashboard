@@ -18,7 +18,7 @@ public class PurchaseOrderLine {
     @Id
     @ColumnDefault("NEXT VALUE FOR [Sequences].[PurchaseOrderLineID]")
     @Column(name = "PurchaseOrderLineID", nullable = false)
-    private Integer id;
+    private Integer purchaseOrderLineID;
 
     @Column(name = "OrderedOuters", nullable = false)
     private Integer orderedOuters;

@@ -16,7 +16,7 @@ public class PackageType {
     @Id
     @ColumnDefault("NEXT VALUE FOR [Sequences].[PackageTypeID]")
     @Column(name = "PackageTypeID", nullable = false)
-    private Integer id;
+    private Integer packageTypeID;
 
     @Nationalized
     @Column(name = "PackageTypeName", nullable = false, length = 50)

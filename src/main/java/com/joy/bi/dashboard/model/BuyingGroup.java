@@ -16,7 +16,7 @@ public class BuyingGroup {
     @Id
     @ColumnDefault("NEXT VALUE FOR [Sequences].[BuyingGroupID]")
     @Column(name = "BuyingGroupID", nullable = false)
-    private Integer id;
+    private Integer buyingGroupID;
 
     @Nationalized
     @Column(name = "BuyingGroupName", nullable = false, length = 50)

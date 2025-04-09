@@ -17,7 +17,7 @@ public class OrderLine {
     @Id
     @ColumnDefault("NEXT VALUE FOR [Sequences].[OrderLineID]")
     @Column(name = "OrderLineID", nullable = false)
-    private Integer id;
+    private Integer orderLineID;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "OrderID", nullable = false)

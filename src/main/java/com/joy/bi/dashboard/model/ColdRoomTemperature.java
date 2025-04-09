@@ -17,7 +17,7 @@ import java.time.Instant;
 public class ColdRoomTemperature {
     @Id
     @Column(name = "ColdRoomTemperatureID", nullable = false)
-    private Long id;
+    private Long coldRoomTemperatureID;
 
     @Column(name = "ColdRoomSensorNumber", nullable = false)
     private Integer coldRoomSensorNumber;

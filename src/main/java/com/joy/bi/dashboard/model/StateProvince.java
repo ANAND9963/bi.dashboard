@@ -16,7 +16,7 @@ public class StateProvince {
     @Id
     @ColumnDefault("NEXT VALUE FOR [Sequences].[StateProvinceID]")
     @Column(name = "StateProvinceID", nullable = false)
-    private Integer id;
+    private Integer stateProvinceID;
 
     @Nationalized
     @Column(name = "StateProvinceCode", nullable = false, length = 5)

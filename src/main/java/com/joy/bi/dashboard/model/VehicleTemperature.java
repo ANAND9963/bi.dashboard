@@ -18,7 +18,7 @@ import java.time.Instant;
 public class VehicleTemperature {
     @Id
     @Column(name = "VehicleTemperatureID", nullable = false)
-    private Long id;
+    private Long vehicleTemperatureID;
 
     @Nationalized
     @Column(name = "VehicleRegistration", nullable = false, length = 20)

@@ -16,7 +16,7 @@ public class CustomerCategory {
     @Id
     @ColumnDefault("NEXT VALUE FOR [Sequences].[CustomerCategoryID]")
     @Column(name = "CustomerCategoryID", nullable = false)
-    private Integer id;
+    private Integer customerCategoryID;
 
     @Nationalized
     @Column(name = "CustomerCategoryName", nullable = false, length = 50)

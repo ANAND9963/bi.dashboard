@@ -16,7 +16,7 @@ public class TransactionType {
     @Id
     @ColumnDefault("NEXT VALUE FOR [Sequences].[TransactionTypeID]")
     @Column(name = "TransactionTypeID", nullable = false)
-    private Integer id;
+    private Integer transactionTypeID;
 
     @Nationalized
     @Column(name = "TransactionTypeName", nullable = false, length = 50)

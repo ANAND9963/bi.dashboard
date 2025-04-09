@@ -16,7 +16,7 @@ public class Person {
     @Id
     @ColumnDefault("NEXT VALUE FOR [Sequences].[PersonID]")
     @Column(name = "PersonID", nullable = false)
-    private Integer id;
+    private Integer personID;
 
     @Nationalized
     @Column(name = "FullName", nullable = false, length = 50)

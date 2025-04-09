@@ -16,7 +16,7 @@ public class StockItemTransaction {
     @Id
     @ColumnDefault("NEXT VALUE FOR [Sequences].[TransactionID]")
     @Column(name = "StockItemTransactionID", nullable = false)
-    private Integer id;
+    private Integer stockItemTransactionID;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CustomerID")

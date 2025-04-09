@@ -16,7 +16,7 @@ public class Supplier {
     @Id
     @ColumnDefault("NEXT VALUE FOR [Sequences].[SupplierID]")
     @Column(name = "SupplierID", nullable = false)
-    private Integer id;
+    private Integer supplierID;
 
     @Nationalized
     @Column(name = "SupplierName", nullable = false, length = 100)

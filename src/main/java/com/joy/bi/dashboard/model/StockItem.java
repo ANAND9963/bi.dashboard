@@ -17,7 +17,7 @@ public class StockItem {
     @Id
     @ColumnDefault("NEXT VALUE FOR [Sequences].[StockItemID]")
     @Column(name = "StockItemID", nullable = false)
-    private Integer id;
+    private Integer stockItemID;
 
     @Nationalized
     @Column(name = "StockItemName", nullable = false, length = 100)

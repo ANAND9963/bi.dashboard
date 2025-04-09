@@ -16,7 +16,7 @@ public class City {
     @Id
     @ColumnDefault("NEXT VALUE FOR [Sequences].[CityID]")
     @Column(name = "CityID", nullable = false)
-    private Integer id;
+    private Integer cityID;
 
     @Nationalized
     @Column(name = "CityName", nullable = false, length = 50)

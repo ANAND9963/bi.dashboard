@@ -16,7 +16,7 @@ public class Country {
     @Id
     @ColumnDefault("NEXT VALUE FOR [Sequences].[CountryID]")
     @Column(name = "CountryID", nullable = false)
-    private Integer id;
+    private Integer countryID;
 
     @Nationalized
     @Column(name = "CountryName", nullable = false, length = 60)

@@ -17,7 +17,7 @@ public class Invoice {
     @Id
     @ColumnDefault("NEXT VALUE FOR [Sequences].[InvoiceID]")
     @Column(name = "InvoiceID", nullable = false)
-    private Integer id;
+    private Integer invoiceID;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "CustomerID", nullable = false)

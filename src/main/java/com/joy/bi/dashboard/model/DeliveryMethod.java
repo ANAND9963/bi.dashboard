@@ -16,7 +16,7 @@ public class DeliveryMethod {
     @Id
     @ColumnDefault("NEXT VALUE FOR [Sequences].[DeliveryMethodID]")
     @Column(name = "DeliveryMethodID", nullable = false)
-    private Integer id;
+    private Integer deliveryMethodID;
 
     @Nationalized
     @Column(name = "DeliveryMethodName", nullable = false, length = 50)

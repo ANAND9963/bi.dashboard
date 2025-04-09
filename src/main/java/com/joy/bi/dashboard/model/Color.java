@@ -16,7 +16,7 @@ public class Color {
     @Id
     @ColumnDefault("NEXT VALUE FOR [Sequences].[ColorID]")
     @Column(name = "ColorID", nullable = false)
-    private Integer id;
+    private Integer colorID;
 
     @Nationalized
     @Column(name = "ColorName", nullable = false, length = 20)
