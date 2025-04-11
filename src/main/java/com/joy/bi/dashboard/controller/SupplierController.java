@@ -1,7 +1,6 @@
 package com.joy.bi.dashboard.controller;
 
-import com.joy.bi.dashboard.dto.SupplierCountByCategory;
-import com.joy.bi.dashboard.dto.SupplierOption;
+import com.joy.bi.dashboard.dto.*;
 import com.joy.bi.dashboard.service.SupplierService;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,5 +26,25 @@ public class SupplierController {
     @GetMapping("/list")
     public List<SupplierOption> getAllSuppliersForDropdown() {
         return service.getAllSupplierOptions();
+    }
+
+    @GetMapping("/delivery-methods")
+    public List<SupplierDeliveryMethodDTO> getDeliveryMethods() {
+        return service.getDeliveryMethods();
+    }
+
+    @GetMapping("/locations")
+    public List<SupplierLocationDTO> getSupplierLocations() {
+        return service.getSupplierLocations();
+    }
+
+    @GetMapping("/geo")
+    public List<SupplierGeoDTO> getGeoDetails() {
+        return service.getSupplierGeoData();
+    }
+
+    @GetMapping("/contacts")
+    public List<SupplierContactDTO> getContacts() {
+        return service.getSupplierContacts();
     }
 }

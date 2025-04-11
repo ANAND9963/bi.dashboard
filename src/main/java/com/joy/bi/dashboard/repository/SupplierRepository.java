@@ -1,6 +1,6 @@
 package com.joy.bi.dashboard.repository;
 
-import com.joy.bi.dashboard.dto.SupplierOption;
+import com.joy.bi.dashboard.dto.*;
 import com.joy.bi.dashboard.model.Supplier;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
@@ -27,5 +27,50 @@ public interface SupplierRepository extends Repository<Supplier, Long> {
     @Query(value = "SELECT s.SupplierID, s.SupplierName FROM Purchasing.Suppliers s", nativeQuery = true)
     List<Object[]> findAllSupplierOptionsNative();
 
+    @Query(value = """
+        SELECT 
+            s.SupplierName,
+            dm.DeliveryMethodName
+        FROM Purchasing.Suppliers s
+        JOIN Application.DeliveryMethods dm ON s.DeliveryMethodID = dm.DeliveryMethodID
+        ORDER BY s.SupplierName
+    """, nativeQuery = true)
+    List<Object[]> getSupplierDeliveryMethodsNative();
 
+    @Query(value = """
+        SELECT 
+            s.SupplierName,
+            c.CityName,
+            c.Location.Lat AS Latitude,
+            c.Location.Long AS Longitude
+        FROM Purchasing.Suppliers s
+        JOIN Application.Cities c ON s.DeliveryCityID = c.CityID
+        WHERE c.Location IS NOT NULL
+    """, nativeQuery = true)
+    List<Object[]> getSupplierLocationsNative();
+
+    @Query(value = """
+        SELECT 
+            s.SupplierName,
+            co.Continent,
+            co.CountryName,
+            c.CityName
+        FROM Purchasing.Suppliers s
+        JOIN Application.Cities c ON s.DeliveryCityID = c.CityID
+        JOIN Application.StateProvinces sp ON c.StateProvinceID = sp.StateProvinceID
+        JOIN Application.Countries co ON sp.CountryID = co.CountryID
+        ORDER BY co.Continent, s.SupplierName
+    """, nativeQuery = true)
+    List<Object[]> getSupplierGeoDetailsNative();
+
+    @Query(value = """
+        SELECT 
+            s.SupplierName,
+            p.FullName,
+            p.EmailAddress,
+            p.PhoneNumber
+        FROM Purchasing.Suppliers s
+        JOIN Application.People p ON s.PrimaryContactPersonID = p.PersonID
+    """, nativeQuery = true)
+    List<Object[]> getSupplierContactsNative();
 }
