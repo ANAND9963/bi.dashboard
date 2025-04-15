@@ -1,6 +1,7 @@
 package com.joy.bi.dashboard.controller;
 
 import com.joy.bi.dashboard.config.JwtProvider;
+import com.joy.bi.dashboard.exception.EmailAlreadyExistsException;
 import com.joy.bi.dashboard.model.USER_ROLE;
 import com.joy.bi.dashboard.model.User;
 import com.joy.bi.dashboard.repository.UserRepository;
@@ -17,15 +18,12 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api")
 public class AuthController {
 
     @Autowired
@@ -40,13 +38,13 @@ public class AuthController {
     private CustomerUserDetailsService customerUserDetailsService;
 
 
-    @PostMapping("/signup")
+    @PostMapping("/signUp")
     public ResponseEntity<AuthResponse> createUserHandler(@RequestBody User user) throws Exception {
 
         User isEmailExist = userRepository.findByEmail(user.getEmail());
 
         if(isEmailExist != null){
-            throw new Exception("Email is already in use");
+            throw new EmailAlreadyExistsException("Email already in use. Try logging in instead.");
         }
 
         User createdUser = new User();
@@ -65,15 +63,14 @@ public class AuthController {
 
         AuthResponse authResponse = new AuthResponse();
         authResponse.setJwt(jwt);
-        authResponse.setMessage("register success");
+        authResponse.setMessage("You're Registred successfully");
         authResponse.setRole(savedUser.getRole());
-
         return new ResponseEntity<>(authResponse, HttpStatus.CREATED);
 
 
     }
 
-    @PostMapping("/signin")
+    @PostMapping("/signIn")
     public ResponseEntity<AuthResponse> signin(@RequestBody LoginRequest req){
 
         String username = req.getEmail();
